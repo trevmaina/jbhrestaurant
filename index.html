@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Allows users to pinch-to-zoom on phones to read smaller price details -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Tatu University Restaurant Menu</title>
   <style>
@@ -15,28 +14,30 @@
       background-color: #121212;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center; /* Centers vertically */
       min-height: 100vh;
-      padding: 0;
+      min-height: 100dvh;  /* Adapts to mobile dynamic browser bars */
+      padding: 12px;
     }
     .menu-wrapper {
       width: 100%;
-      /* Expands fully on mobile, caps cleanly on large desktop displays */
       max-width: 1200px;
-      margin: 0 auto;
+      margin: auto;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
     .menu-image {
-      /* Fits full width of mobile screens */
       width: 100%;
-      height: auto;
-      display: block;
+      max-height: 95vh;
+      max-height: 95dvh;
       object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      border-radius: 6px;
       cursor: zoom-in;
     }
 
-    /* Desktop polish */
     @media (min-width: 768px) {
       body {
         padding: 24px 16px;
@@ -50,8 +51,7 @@
 </head>
 <body>
   <div class="menu-wrapper">
-    <!-- Click on desktop will open high-res original in new tab -->
-    <a href="./taturestaurant.png" target="_blank" rel="noopener noreferrer" style="width: 100%; display: block;">
+    <a href="./taturestaurant.png" target="_blank" rel="noopener noreferrer" style="display: inline-block; width: 100%; text-align: center;">
       <img 
         class="menu-image" 
         src="./taturestaurant.png" 
