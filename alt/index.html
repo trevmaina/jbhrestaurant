@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tatu University Restaurant Menu | WTC 2026</title>
+  <title>Tatu University Restaurant Menu - WTC 2026</title>
   <style>
     :root {
-      --primary-blue: #0b2b82;
-      --navy-dark: #071a52;
-      --accent-red: #d3122a;
-      --price-red: #c91010;
-      --tag-green: #0a8f44;
-      --gold-accent: #f59e0b;
-      --bg-cream: #f4f5f7;
+      --primary-blue: #0b3b82;
+      --secondary-blue: #002244;
+      --accent-red: #c91818;
+      --accent-green: #107c41;
       --card-bg: #ffffff;
-      --text-dark: #1f2937;
-      --text-muted: #4b5563;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --price-bg: #d92525;
+      --yellow-accent: #f59e0b;
     }
 
     * {
@@ -25,120 +25,122 @@
     }
 
     body {
+      background-color: #f1f5f9;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg-cream);
       color: var(--text-dark);
+      padding: 12px;
       line-height: 1.4;
-      padding-bottom: 40px;
     }
 
-    /* Container */
     .container {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 0 16px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
     }
 
-    /* Header Banner */
-    .header-banner {
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--primary-blue) 100%);
-      color: white;
+    /* Comparison Bar */
+    .compare-bar {
+      background: #1e293b;
+      color: #fff;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    .compare-bar a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+      color: #ffffff;
       padding: 24px 16px;
       text-align: center;
       border-bottom: 4px solid var(--accent-red);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-
-    .event-tag {
-      display: inline-block;
-      background-color: var(--accent-red);
-      color: #fff;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      padding: 5px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .main-title {
-      font-size: 1.7rem;
-      font-weight: 900;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      line-height: 1.2;
-    }
-
-    .sub-tagline {
+    .conf-tag {
       font-size: 0.95rem;
-      font-weight: 600;
-      color: #e0e7ff;
-      margin-bottom: 12px;
-      letter-spacing: 0.3px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: #93c5fd;
+      text-transform: uppercase;
     }
-
-    .event-meta {
-      display: inline-flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.12);
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 0.82rem;
+    h1 {
+      font-size: 1.7rem;
+      margin: 6px 0;
+      font-weight: 800;
+    }
+    .subtitle {
+      font-size: 0.9rem;
+      color: #f8fafc;
       font-weight: 500;
     }
-
-    .event-meta span {
-      display: flex;
-      align-items: center;
+    .meta-badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
     }
 
     /* Grid Layout */
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 24px;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 16px;
     }
 
-    /* Category Cards */
-    .category-card {
-      background: var(--card-bg);
+    @media (min-width: 768px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .menu-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Menu Sections */
+    .section-card {
+      border: 1px solid var(--border-color);
       border-radius: 10px;
+      background: var(--card-bg);
       overflow: hidden;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
     }
 
-    .card-header {
-      padding: 12px 14px;
-      color: white;
-      font-weight: 800;
-      font-size: 0.95rem;
+    .section-header {
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      color: #ffffff;
     }
 
-    .header-gold { background: #d97706; }
-    .header-orange { background: #ea580c; }
-    .header-blue { background: var(--primary-blue); }
-    .header-red { background: var(--accent-red); }
-    .header-green { background: #059669; }
+    .bg-breakfast { background: #b45309; }
+    .bg-main { background: var(--primary-blue); }
+    .bg-chicken { background: #0f766e; }
+    .bg-snacks { background: #be123c; }
+    .bg-special { background: #7c2d12; }
+    .bg-drinks { background: #1e3a8a; }
 
-    .items-list {
+    .item-list {
       list-style: none;
-      padding: 8px 14px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
+      padding: 8px 12px;
+      flex-grow: 1;
     }
 
     .menu-item {
@@ -146,528 +148,285 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 0;
-      border-bottom: 1px dashed #e5e7eb;
-      gap: 12px;
+      border-bottom: 1px dashed var(--border-color);
     }
-
     .menu-item:last-child {
       border-bottom: none;
     }
 
-    .item-details {
-      flex: 1;
-    }
-
     .item-name {
-      font-weight: 700;
-      font-size: 0.92rem;
-      color: #111827;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #1e293b;
+      padding-right: 8px;
     }
 
-    .item-subtext {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .price-badge {
-      background: #fee2e2;
-      color: var(--price-red);
-      font-weight: 800;
-      font-size: 0.88rem;
-      padding: 4px 9px;
+    .price-tag {
+      background: var(--price-bg);
+      color: #ffffff;
+      padding: 4px 10px;
       border-radius: 6px;
-      border: 1px solid #fca5a5;
+      font-weight: 700;
+      font-size: 0.85rem;
       white-space: nowrap;
     }
 
-    /* Packages Section */
+    /* Meal Packages */
     .packages-section {
-      margin-top: 32px;
-      background: white;
-      border-radius: 12px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      overflow: hidden;
+      padding: 16px;
+      background: #f8fafc;
+      border-top: 2px solid var(--border-color);
     }
-
     .packages-title {
-      background: var(--tag-green);
-      color: white;
-      padding: 12px 18px;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      color: var(--secondary-blue);
+      margin-bottom: 12px;
+      text-align: center;
     }
-
     .packages-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      padding: 18px;
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
-
-    .pkg-card {
-      border: 2px solid #e5e7eb;
+    @media (min-width: 640px) {
+      .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .packages-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .package-card {
+      background: #ffffff;
       border-radius: 8px;
-      padding: 16px;
+      border: 1px solid var(--border-color);
+      padding: 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: #fafafa;
-    }
-
-    .pkg-card.highlight {
-      border-color: var(--primary-blue);
-      background: #f0f7ff;
-    }
-
-    .pkg-name {
-      font-weight: 800;
-      font-size: 0.98rem;
-      color: var(--navy-dark);
-      margin-bottom: 8px;
-    }
-
-    .pkg-desc {
-      font-size: 0.83rem;
-      color: #374151;
-      margin-bottom: 14px;
-      line-height: 1.4;
-      flex: 1;
-    }
-
-    .pkg-price {
-      background: var(--accent-red);
-      color: white;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-weight: 800;
       text-align: center;
+    }
+    .pkg-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--primary-blue);
+      margin-bottom: 6px;
+    }
+    .pkg-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      min-height: 40px;
+    }
+    .pkg-price {
+      background: var(--accent-green);
+      color: #ffffff;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 6px;
       font-size: 0.95rem;
     }
 
-    /* Footer / Payment & Notes */
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .info-card {
-      background: white;
-      border-radius: 8px;
-      border: 1px solid #e5e7eb;
+    /* Payment & Important Notes */
+    .footer-info {
       padding: 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      background: #ffffff;
+      border-top: 1px solid var(--border-color);
     }
-
-    .info-title {
-      font-weight: 800;
-      font-size: 0.92rem;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+    @media (min-width: 768px) {
+      .footer-info {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .info-box {
+      border: 1px solid var(--border-color);
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+    .info-box h3 {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      color: var(--secondary-blue);
       display: flex;
       align-items: center;
       gap: 6px;
     }
-
-    .payment-details {
-      font-size: 0.86rem;
-      line-height: 1.6;
+    .info-box p {
+      margin-bottom: 4px;
     }
 
-    .payment-row {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px dashed #e5e7eb;
-      padding: 4px 0;
-    }
-
-    .payment-row:last-child {
-      border-bottom: none;
-    }
-
-    .payment-label {
-      color: var(--text-muted);
+    /* Footer Tagline */
+    .brand-footer {
+      background: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 16px;
+      font-size: 0.85rem;
       font-weight: 600;
     }
-
-    .payment-val {
-      font-weight: 800;
-      color: #111827;
-    }
-
-    .notes-list {
-      padding-left: 18px;
-      font-size: 0.82rem;
-      color: #4b5563;
-      line-height: 1.5;
-    }
-
-    .notes-list li {
-      margin-bottom: 6px;
-    }
-
-    .bottom-bar {
-      margin-top: 24px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: #6b7280;
-      letter-spacing: 0.5px;
-    }
-
-    /* Responsive adjustment */
-    @media (max-width: 600px) {
-      .main-title {
-        font-size: 1.3rem;
-      }
-      .event-meta {
-        font-size: 0.78rem;
-      }
-      .menu-grid {
-        grid-template-columns: 1fr;
-      }
+    .brand-footer span {
+      color: #38bdf8;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header Banner -->
-  <header class="header-banner">
-    <div class="container">
-      <div class="event-tag">World Talent Conference 2026 (WTC 2026)</div>
-      <h1 class="main-title">Tatu University Restaurant Menu</h1>
-      <p class="sub-tagline">Affordable, Nutritious and Delicious Kenyan / African Meals</p>
-      <div class="event-meta">
-        <span>📅 Monday, 26th October – Friday, 30th October 2026</span>
-        <span>📍 TATU Main Campus, Kisumu</span>
-      </div>
+  <div class="container">
+
+    <!-- Top Navigation Switcher for your boss -->
+    <div class="compare-bar">
+      <span>Alternative Web View</span>
+      <a href="/">← View Original Poster Image</a>
     </div>
-  </header>
 
-  <main class="container">
-
-    <!-- Categories Grid -->
-    <section class="menu-grid">
-
-      <!-- Breakfast Menu -->
-      <article class="category-card">
-        <div class="card-header header-gold">
-          <span>Breakfast Menu</span>
-          <span>☕</span>
-        </div>
-        <ul class="items-list">
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Tea (Milk) + 1 Mandazi</div>
-            </div>
-            <div class="price-badge">KES 50</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Tea (Milk) + 2 Mandazi / 1 Chapati</div>
-            </div>
-            <div class="price-badge">KES 70</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Tea (Milk) + 2 Chapati / 1 Egg</div>
-            </div>
-            <div class="price-badge">KES 130</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Tea (Milk) + 2 Eggs + 2 Chapati</div>
-            </div>
-            <div class="price-badge">KES 150</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Mandazi (Plain)</div>
-              <div class="item-subtext">Single piece</div>
-            </div>
-            <div class="price-badge">KES 25</div>
-          </li>
-        </ul>
-      </article>
-
-      <!-- Lunch & Main Meals -->
-      <article class="category-card">
-        <div class="card-header header-orange">
-          <span>Lunch & Main Meals</span>
-          <span>🍲</span>
-        </div>
-        <ul class="items-list">
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Ugali / Rice + Cabbage / Sukuma</div>
-            </div>
-            <div class="price-badge">KES 120</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Ugali / Rice + Beans / Ndengu</div>
-            </div>
-            <div class="price-badge">KES 150</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Ugali / Rice + Beef Stew</div>
-            </div>
-            <div class="price-badge">KES 250</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Ugali / Rice + Goat Stew</div>
-            </div>
-            <div class="price-badge">KES 350</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Ugali / Rice + 1/4 Chicken</div>
-            </div>
-            <div class="price-badge">KES 1,300</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Chips + 1/4 Chicken</div>
-            </div>
-            <div class="price-badge">KES 250</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Chips (Plain)</div>
-            </div>
-            <div class="price-badge">KES 100</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Pilau + Beef Stew</div>
-            </div>
-            <div class="price-badge">KES 150</div>
-          </li>
-        </ul>
-      </article>
-
-      <!-- Fish & Kienyeji Chicken -->
-      <article class="category-card">
-        <div class="card-header header-blue">
-          <span>Fish & Kienyeji Chicken</span>
-          <span>🐟</span>
-        </div>
-        <ul class="items-list">
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Ugali + 1/2 Fish</div>
-              <div class="item-subtext">Served with Greens / Sukuma</div>
-            </div>
-            <div class="price-badge">KES 550</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Ugali + Full Fish</div>
-              <div class="item-subtext">Served with Greens / Sukuma</div>
-            </div>
-            <div class="price-badge">KES 900</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Ugali + 1/4 Kienyeji Chicken</div>
-              <div class="item-subtext">Served with Greens</div>
-            </div>
-            <div class="price-badge">KES 550</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Ugali + 1/2 Kienyeji Chicken</div>
-              <div class="item-subtext">Served with Greens</div>
-            </div>
-            <div class="price-badge">KES 900</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Ugali / Chapati + Full Kienyeji Chicken</div>
-              <div class="item-subtext">Served with Greens / Sukuma</div>
-            </div>
-            <div class="price-badge">KES 1,800</div>
-          </li>
-        </ul>
-      </article>
-
-      <!-- Snacks & Quick Bites -->
-      <article class="category-card">
-        <div class="card-header header-green">
-          <span>Snacks & Drinks</span>
-          <span>🥤</span>
-        </div>
-        <ul class="items-list">
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Samosa (Pair / Meat)</div>
-            </div>
-            <div class="price-badge">KES 70</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Smokie</div>
-            </div>
-            <div class="price-badge">KES 40</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Sausage (Pair)</div>
-            </div>
-            <div class="price-badge">KES 60</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Egg Chapati Roll</div>
-            </div>
-            <div class="price-badge">KES 120</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Chips Masala</div>
-            </div>
-            <div class="price-badge">KES 150</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Soft Drink / Soda</div>
-              <div class="item-subtext">500ml Pet Bottle</div>
-            </div>
-            <div class="price-badge">KES 70</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Mineral Water</div>
-              <div class="item-subtext">500ml Bottle</div>
-            </div>
-            <div class="price-badge">KES 50</div>
-          </li>
-        </ul>
-      </article>
-
-      <!-- Friday Special -->
-      <article class="category-card">
-        <div class="card-header header-red">
-          <span>Friday Evening Special</span>
-          <span>🔥</span>
-        </div>
-        <ul class="items-list">
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Nyama Choma & Kuku Choma</div>
-              <div class="item-subtext">At the WTC Talent Extravaganza (Friday, 30th October 2026)</div>
-            </div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Nyama Choma (Platter)</div>
-              <div class="item-subtext">Served with Ugali / Kachumbari</div>
-            </div>
-            <div class="price-badge">Price on request</div>
-          </li>
-          <li class="menu-item">
-            <div class="item-details">
-              <div class="item-name">Kuku Choma (Grilled Chicken)</div>
-              <div class="item-subtext">Served with Ugali / Kachumbari</div>
-            </div>
-            <div class="price-badge">Price on request</div>
-          </li>
-        </ul>
-      </article>
-
-    </section>
-
-    <!-- Meal Packages Section -->
-    <section class="packages-section">
-      <div class="packages-title">
-        Affordable Meal Packages (Monday – Friday)
+    <!-- Header Section -->
+    <header>
+      <div class="conf-tag">World Talent Conference 2026 (WTC 2026)</div>
+      <h1>TATU UNIVERSITY RESTAURANT MENU</h1>
+      <div class="subtitle">Affordable, Nutritious and Delicious Kenyan / African Meals</div>
+      <div class="meta-badge">
+        📅 Monday, 26th October – Friday, 30th October 2026 | 📍 TATU Main Campus, Kisumu
       </div>
+    </header>
+
+    <!-- Menu Items Grid -->
+    <div class="menu-grid">
+
+      <!-- 1. Breakfast Menu -->
+      <div class="section-card">
+        <div class="section-header bg-breakfast">☕ Breakfast Menu</div>
+        <ul class="item-list">
+          <li class="menu-item"><span class="item-name">Tea (Milk) + 1 Mandazi</span><span class="price-tag">KES 50</span></li>
+          <li class="menu-item"><span class="item-name">Tea (Milk) + 1 Chapati</span><span class="price-tag">KES 70</span></li>
+          <li class="menu-item"><span class="item-name">Tea (Milk) + 1 Sausage</span><span class="price-tag">KES 130</span></li>
+          <li class="menu-item"><span class="item-name">Tea (Milk) + 1 Egg</span><span class="price-tag">KES 150</span></li>
+          <li class="menu-item"><span class="item-name">Mandazi (Plain)</span><span class="price-tag">KES 25</span></li>
+        </ul>
+      </div>
+
+      <!-- 2. Lunch & Main Meals -->
+      <div class="section-card">
+        <div class="section-header bg-main">🍲 Lunch & Main Meals Menu</div>
+        <ul class="item-list">
+          <li class="menu-item"><span class="item-name">Ugali / Rice + Cabbage / Sukuma Wiki</span><span class="price-tag">KES 120</span></li>
+          <li class="menu-item"><span class="item-name">Ugali / Rice + Beans / Ndengu</span><span class="price-tag">KES 150</span></li>
+          <li class="menu-item"><span class="item-name">Ugali / Rice + Matumbo Stew</span><span class="price-tag">KES 250</span></li>
+          <li class="menu-item"><span class="item-name">Ugali / Rice + Beef Stew</span><span class="price-tag">KES 350</span></li>
+          <li class="menu-item"><span class="item-name">Ugali / Rice + 1/4 Chicken</span><span class="price-tag">KES 1,300</span></li>
+          <li class="menu-item"><span class="item-name">Chips + 1/4 Chicken</span><span class="price-tag">KES 250</span></li>
+          <li class="menu-item"><span class="item-name">Chips (Plain)</span><span class="price-tag">KES 100</span></li>
+          <li class="menu-item"><span class="item-name">Chapati (1 pc)</span><span class="price-tag">KES 150</span></li>
+        </ul>
+      </div>
+
+      <!-- 3. Fish & Kienyeji Chicken -->
+      <div class="section-card">
+        <div class="section-header bg-chicken">🍗 Fish & Kienyeji Chicken Menu</div>
+        <ul class="item-list">
+          <li class="menu-item"><span class="item-name">Ugali + 1/4 Fish (Medium)</span><span class="price-tag">KES 550</span></li>
+          <li class="menu-item"><span class="item-name">Ugali + 1/2 Fish (Large)</span><span class="price-tag">KES 900</span></li>
+          <li class="menu-item"><span class="item-name">Ugali + Whole Fish</span><span class="price-tag">KES 550</span></li>
+          <li class="menu-item"><span class="item-name">Ugali + 1/4 Kienyeji Chicken</span><span class="price-tag">KES 900</span></li>
+          <li class="menu-item"><span class="item-name">Ugali + 1/2 Kienyeji Chicken</span><span class="price-tag">KES 1,100</span></li>
+        </ul>
+      </div>
+
+      <!-- 4. Snacks & Quick Bites -->
+      <div class="section-card">
+        <div class="section-header bg-snacks">🥪 Snacks & Quick Bites</div>
+        <ul class="item-list">
+          <li class="menu-item"><span class="item-name">Sausage</span><span class="price-tag">KES 70</span></li>
+          <li class="menu-item"><span class="item-name">Samosa</span><span class="price-tag">KES 40</span></li>
+          <li class="menu-item"><span class="item-name">Smokie / Chapati</span><span class="price-tag">KES 60</span></li>
+          <li class="menu-item"><span class="item-name">Boiled Egg</span><span class="price-tag">KES 120</span></li>
+          <li class="menu-item"><span class="item-name">Chips Mayai</span><span class="price-tag">KES 100</span></li>
+          <li class="menu-item"><span class="item-name">Kuku Choma / Grilled Chicken</span><span class="price-tag">KES 70</span></li>
+        </ul>
+      </div>
+
+      <!-- 5. Friday Evening Special -->
+      <div class="section-card">
+        <div class="section-header bg-special">🔥 Friday Evening Special</div>
+        <ul class="item-list">
+          <li class="menu-item">
+            <span class="item-name"><strong>NYAMA CHOMA & KUKU CHOMA</strong><br><small style="color: #64748b;">At the World Talent Extravaganza (Friday, 30th October 2026)</small></span>
+          </li>
+          <li class="menu-item"><span class="item-name">Nyama Choma</span><span class="price-tag">Price on request</span></li>
+          <li class="menu-item"><span class="item-name">Kuku Choma (Fried / Grilled Chicken)</span><span class="price-tag">Price on request</span></li>
+        </ul>
+      </div>
+
+      <!-- 6. Drinks -->
+      <div class="section-card">
+        <div class="section-header bg-drinks">🥤 Drinks</div>
+        <ul class="item-list">
+          <li class="menu-item"><span class="item-name">Soda (300ml / 500ml)</span><span class="price-tag">KES 70</span></li>
+          <li class="menu-item"><span class="item-name">Mineral Water (500ml)</span><span class="price-tag">KES 50</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Affordable Meal Packages -->
+    <div class="packages-section">
+      <div class="packages-title">🍱 Affordable Meal Packages (Monday – Friday)</div>
       <div class="packages-grid">
-        <div class="pkg-card">
-          <div class="pkg-name">Student Economy Package</div>
-          <div class="pkg-desc">Tea + 1 Mandazi (B/F)<br>Ugali / Rice + Sukuma / Cabbage (Lunch)<br>Ugali / Rice + Beans (Dinner)</div>
+        <div class="package-card">
+          <div class="pkg-title">Student Economy Package</div>
+          <div class="pkg-desc">Tea + 1 Mandazi + Ugali/Rice + Veg Lunch + Water</div>
           <div class="pkg-price">KES 240 / day</div>
         </div>
-
-        <div class="pkg-card">
-          <div class="pkg-name">Student Standard Package</div>
-          <div class="pkg-desc">Tea + 2 Mandazi (B/F)<br>Ugali / Rice + Beef Stew (Lunch)<br>Rice + Beans (Dinner)</div>
+        <div class="package-card">
+          <div class="pkg-title">Student Standard Package</div>
+          <div class="pkg-desc">Tea + 1 Chapati + Rice/Beans Veg Lunch + Soda</div>
           <div class="pkg-price">KES 350 / day</div>
         </div>
-
-        <div class="pkg-card highlight">
-          <div class="pkg-name">Staff Package</div>
-          <div class="pkg-desc">Tea + 2 Eggs + 2 Chapati (B/F)<br>Ugali / Rice + Beef Stew / Goat (Lunch)<br>Evening Tea + Samosa / Chapati</div>
+        <div class="package-card">
+          <div class="pkg-title">Staff Standard Package</div>
+          <div class="pkg-desc">Tea + Egg/Sausage + Ugali/Rice + Beef Stew + Drink</div>
           <div class="pkg-price">KES 580 / day</div>
         </div>
-
-        <div class="pkg-card">
-          <div class="pkg-name">Staff Special Package</div>
-          <div class="pkg-desc">Special Breakfast buffet<br>Ugali + 1/4 Kienyeji Chicken / Fish (Lunch)<br>Evening Refreshment & Snacks</div>
+        <div class="package-card">
+          <div class="pkg-title">Staff Special Package</div>
+          <div class="pkg-desc">Tea + 2 Chapati + Ugali/Chips + 1/4 Chicken + Soda</div>
           <div class="pkg-price">KES 660 / day</div>
         </div>
       </div>
-    </section>
-
-    <!-- Payment & Important Notes -->
-    <section class="footer-grid">
-      <!-- Payment Details -->
-      <div class="info-card">
-        <div class="info-title" style="color: var(--tag-green);">
-          💳 Payment Details
-        </div>
-        <div class="payment-details">
-          <div class="payment-row">
-            <span class="payment-label">Bank Name:</span>
-            <span class="payment-val">National Bank of Kenya</span>
-          </div>
-          <div class="payment-row">
-            <span class="payment-label">Branch:</span>
-            <span class="payment-val">Kisumu Branch – Lutheran Mall</span>
-          </div>
-          <div class="payment-row">
-            <span class="payment-label">Account Name:</span>
-            <span class="payment-val">The African Talent University</span>
-          </div>
-          <div class="payment-row">
-            <span class="payment-label">Account No:</span>
-            <span class="payment-val">7718455145</span>
-          </div>
-          <div class="payment-row">
-            <span class="payment-label">M-PESA Paybill:</span>
-            <span class="payment-val">409826</span>
-          </div>
-          <div class="payment-row">
-            <span class="payment-label">Account No:</span>
-            <span class="payment-val">7718455145</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Important Notes -->
-      <div class="info-card">
-        <div class="info-title" style="color: var(--primary-blue);">
-          ℹ️ Important Notes
-        </div>
-        <ul class="notes-list">
-          <li>All delegate meals and extra conference catering are subject to prior booking.</li>
-          <li>Advance booking guarantees timely service and menu customization for groups and delegations.</li>
-          <li>Direct M-PESA confirmations should be submitted to the catering coordinator at TATU Main Campus, Kisumu.</li>
-        </ul>
-      </div>
-    </section>
-
-    <div class="bottom-bar">
-      Good Food • Great Conversations • A Memorable WTC 2026
     </div>
 
-  </main>
+    <!-- Payment & Important Notes -->
+    <div class="footer-info">
+      <div class="info-box">
+        <h3>💳 Payment Details</h3>
+        <p><strong>Bank:</strong> National Bank of Kenya</p>
+        <p><strong>Branch:</strong> Kisumu Branch - Harambee Mall</p>
+        <p><strong>Account Name:</strong> The African Talent University</p>
+        <p><strong>Account No:</strong> 7718455145</p>
+        <p style="margin-top: 8px;"><strong>M-PESA Paybill:</strong> 424624 | <strong>Account:</strong> 7718455145</p>
+      </div>
+
+      <div class="info-box">
+        <h3>ℹ️ Important Notes</h3>
+        <p>• Delegates and participants are advised to purchase meal coupons daily at the restaurant ticketing counter.</p>
+        <p>• Meal packages are valid Monday to Thursday; special pricing applies to Friday, 30th October 2026.</p>
+        <p>• Prices and selections subject to change without prior notice.</p>
+      </div>
+    </div>
+
+    <!-- Bottom Tagline -->
+    <div class="brand-footer">
+      Good Food • Great Conversations • A Memorable WTC 2026<br>
+      <span>My Talent, My Brand!</span>
+    </div>
+
+  </div>
 
 </body>
 </html>
