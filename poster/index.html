@@ -26,21 +26,19 @@
 
     .poster {
       width: 100%;
-      max-width: 420px;
-      aspect-ratio: 1 / 1.414; /* A5 standard proportion */
-      background-color: #7a1518 !important; /* Force red */
+      max-width: 480px;
+      aspect-ratio: 1 / 1.414; /* A5 proportion */
+      background-color: #7a1518 !important;
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.4);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 44px 28px;
+      padding: 40px 24px;
       text-align: center;
       color: #ffffff !important;
       position: relative;
-
-      /* Forces background colors and images in all browsers */
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
@@ -54,7 +52,7 @@
 
     .main-title {
       font-family: 'Oswald', sans-serif;
-      font-size: 3.2rem;
+      font-size: 3.4rem;
       letter-spacing: 2px;
       line-height: 1;
       text-transform: uppercase;
@@ -63,49 +61,52 @@
     }
 
     .subtitle {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       letter-spacing: 2px;
       font-weight: 800;
       text-transform: uppercase;
       color: #f1f5f9 !important;
     }
 
+    /* Enlarged QR Frame */
     .qr-frame {
       position: relative;
-      padding: 18px;
+      padding: 22px;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 10px 0;
     }
 
     .corner {
       position: absolute;
-      width: 32px;
-      height: 32px;
+      width: 48px;
+      height: 48px;
       border-color: #ffffff !important;
       border-style: solid;
       border-width: 0;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
-    .top-left     { top: 0; left: 0; border-top-width: 5px; border-left-width: 5px; }
-    .top-right    { top: 0; right: 0; border-top-width: 5px; border-right-width: 5px; }
-    .bottom-left  { bottom: 0; left: 0; border-bottom-width: 5px; border-left-width: 5px; }
-    .bottom-right { bottom: 0; right: 0; border-bottom-width: 5px; border-right-width: 5px; }
+    .top-left     { top: 0; left: 0; border-top-width: 6px; border-left-width: 6px; }
+    .top-right    { top: 0; right: 0; border-top-width: 6px; border-right-width: 6px; }
+    .bottom-left  { bottom: 0; left: 0; border-bottom-width: 6px; border-left-width: 6px; }
+    .bottom-right { bottom: 0; right: 0; border-bottom-width: 6px; border-right-width: 6px; }
 
     .qr-image-wrapper {
       background: #ffffff !important;
-      padding: 12px;
-      border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       display: flex;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
 
+    /* Screen view QR size */
     .qr-image-wrapper img {
-      width: 175px;
-      height: 175px;
+      width: 250px;
+      height: 250px;
       display: block;
       object-fit: contain;
     }
@@ -114,39 +115,38 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
 
     .restaurant-name {
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       font-weight: 800;
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: #ffffff !important;
     }
 
     .event-tag {
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.8px;
       color: #fca5a5 !important;
       text-transform: uppercase;
     }
 
-    /* Print styles */
+    /* Print Specific Sizing */
     @media print {
       @page {
-        margin: 0; /* Clears browser headers, URL, dates */
+        margin: 0;
         size: A5 portrait;
       }
       body {
         background: transparent !important;
         padding: 0;
         margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+        display: block;
+        width: 148mm;
+        height: 210mm;
       }
       .poster {
         width: 148mm;
@@ -154,8 +154,38 @@
         max-width: none;
         border-radius: 0;
         box-shadow: none;
+        padding: 18mm 14mm;
         page-break-after: avoid;
         page-break-inside: avoid;
+      }
+
+      /* Big, clear QR Code for table scans */
+      .qr-image-wrapper img {
+        width: 76mm !important;
+        height: 76mm !important;
+      }
+
+      .corner {
+        width: 18mm;
+        height: 18mm;
+        border-width: 0;
+      }
+      .top-left     { border-top-width: 2.5mm; border-left-width: 2.5mm; }
+      .top-right    { border-top-width: 2.5mm; border-right-width: 2.5mm; }
+      .bottom-left  { border-bottom-width: 2.5mm; border-left-width: 2.5mm; }
+      .bottom-right { border-bottom-width: 2.5mm; border-right-width: 2.5mm; }
+
+      .main-title {
+        font-size: 38pt;
+      }
+      .subtitle {
+        font-size: 14pt;
+      }
+      .restaurant-name {
+        font-size: 13pt;
+      }
+      .event-tag {
+        font-size: 9pt;
       }
     }
   </style>
