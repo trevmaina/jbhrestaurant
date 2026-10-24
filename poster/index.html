@@ -24,12 +24,11 @@
       padding: 20px;
     }
 
-    /* Standard A5 Ratio Card */
     .poster {
       width: 100%;
       max-width: 420px;
-      aspect-ratio: 1 / 1.414; /* A5 proportion */
-      background: #7a1518; /* Rich burgundy red from template */
+      aspect-ratio: 1 / 1.414; /* A5 standard proportion */
+      background-color: #7a1518 !important; /* Force red */
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.4);
       display: flex;
@@ -38,8 +37,12 @@
       justify-content: space-between;
       padding: 44px 28px;
       text-align: center;
-      color: #ffffff;
+      color: #ffffff !important;
       position: relative;
+
+      /* Forces background colors and images in all browsers */
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
 
     .header-section {
@@ -56,6 +59,7 @@
       line-height: 1;
       text-transform: uppercase;
       font-weight: 700;
+      color: #ffffff !important;
     }
 
     .subtitle {
@@ -63,10 +67,9 @@
       letter-spacing: 2px;
       font-weight: 800;
       text-transform: uppercase;
-      color: #f1f5f9;
+      color: #f1f5f9 !important;
     }
 
-    /* QR Code Framing */
     .qr-frame {
       position: relative;
       padding: 18px;
@@ -75,14 +78,15 @@
       align-items: center;
     }
 
-    /* Stylized corner brackets */
     .corner {
       position: absolute;
       width: 32px;
       height: 32px;
-      border-color: #ffffff;
+      border-color: #ffffff !important;
       border-style: solid;
       border-width: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
     .top-left     { top: 0; left: 0; border-top-width: 5px; border-left-width: 5px; }
     .top-right    { top: 0; right: 0; border-top-width: 5px; border-right-width: 5px; }
@@ -90,11 +94,13 @@
     .bottom-right { bottom: 0; right: 0; border-bottom-width: 5px; border-right-width: 5px; }
 
     .qr-image-wrapper {
-      background: #ffffff;
+      background: #ffffff !important;
       padding: 12px;
       border-radius: 8px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.25);
       display: flex;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
 
     .qr-image-wrapper img {
@@ -104,7 +110,6 @@
       object-fit: contain;
     }
 
-    /* Footer Branding */
     .footer-section {
       display: flex;
       flex-direction: column;
@@ -117,30 +122,40 @@
       font-weight: 800;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: #ffffff;
+      color: #ffffff !important;
     }
 
     .event-tag {
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.8px;
-      color: #fca5a5;
+      color: #fca5a5 !important;
       text-transform: uppercase;
     }
 
-    /* Print settings */
+    /* Print styles */
     @media print {
+      @page {
+        margin: 0; /* Clears browser headers, URL, dates */
+        size: A5 portrait;
+      }
       body {
-        background: transparent;
+        background: transparent !important;
         padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
       .poster {
-        max-width: 100%;
         width: 148mm;
         height: 210mm;
-        box-shadow: none;
+        max-width: none;
         border-radius: 0;
-        page-break-after: always;
+        box-shadow: none;
+        page-break-after: avoid;
+        page-break-inside: avoid;
       }
     }
   </style>
@@ -148,14 +163,11 @@
 <body>
 
   <div class="poster">
-    
-    <!-- Top Header -->
     <div class="header-section">
       <h1 class="main-title">SCAN HERE</h1>
       <p class="subtitle">TO VIEW OUR MENU</p>
     </div>
 
-    <!-- Center QR with matching white bracket accents -->
     <div class="qr-frame">
       <div class="corner top-left"></div>
       <div class="corner top-right"></div>
@@ -163,17 +175,14 @@
       <div class="corner bottom-right"></div>
 
       <div class="qr-image-wrapper">
-        <!-- Uses the uploaded QR code from your repository -->
-        <img src="./qrcode.png" alt="Scan to view Tatu University Restaurant Menu">
+        <img src="/qrcode.png" alt="Scan to view Tatu University Restaurant Menu">
       </div>
     </div>
 
-    <!-- Footer Identity -->
     <div class="footer-section">
       <div class="restaurant-name">TATU UNIVERSITY RESTAURANT</div>
       <div class="event-tag">World Talent Conference 2026 • Main Campus Kisumu</div>
     </div>
-
   </div>
 
 </body>
