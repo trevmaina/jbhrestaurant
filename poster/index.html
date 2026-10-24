@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tatu University Restaurant - QR Menu Poster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      padding: 20px;
+    }
+
+    /* Standard A5 Ratio Card */
+    .poster {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1 / 1.414; /* A5 proportion */
+      background: #7a1518; /* Rich burgundy red from template */
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 44px 28px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+    }
+
+    .header-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .main-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3.2rem;
+      letter-spacing: 2px;
+      line-height: 1;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #f1f5f9;
+    }
+
+    /* QR Code Framing */
+    .qr-frame {
+      position: relative;
+      padding: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Stylized corner brackets */
+    .corner {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border-color: #ffffff;
+      border-style: solid;
+      border-width: 0;
+    }
+    .top-left     { top: 0; left: 0; border-top-width: 5px; border-left-width: 5px; }
+    .top-right    { top: 0; right: 0; border-top-width: 5px; border-right-width: 5px; }
+    .bottom-left  { bottom: 0; left: 0; border-bottom-width: 5px; border-left-width: 5px; }
+    .bottom-right { bottom: 0; right: 0; border-bottom-width: 5px; border-right-width: 5px; }
+
+    .qr-image-wrapper {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      display: flex;
+    }
+
+    .qr-image-wrapper img {
+      width: 175px;
+      height: 175px;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* Footer Branding */
+    .footer-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .restaurant-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .event-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      color: #fca5a5;
+      text-transform: uppercase;
+    }
+
+    /* Print settings */
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+      }
+      .poster {
+        max-width: 100%;
+        width: 148mm;
+        height: 210mm;
+        box-shadow: none;
+        border-radius: 0;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="poster">
+    
+    <!-- Top Header -->
+    <div class="header-section">
+      <h1 class="main-title">SCAN HERE</h1>
+      <p class="subtitle">TO VIEW OUR MENU</p>
+    </div>
+
+    <!-- Center QR with matching white bracket accents -->
+    <div class="qr-frame">
+      <div class="corner top-left"></div>
+      <div class="corner top-right"></div>
+      <div class="corner bottom-left"></div>
+      <div class="corner bottom-right"></div>
+
+      <div class="qr-image-wrapper">
+        <!-- Uses the uploaded QR code from your repository -->
+        <img src="./Tatu Restaurant.png" alt="Scan to view Tatu University Restaurant Menu">
+      </div>
+    </div>
+
+    <!-- Footer Identity -->
+    <div class="footer-section">
+      <div class="restaurant-name">TATU UNIVERSITY RESTAURANT</div>
+      <div class="event-tag">World Talent Conference 2026 • Main Campus Kisumu</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
