@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Allows users to pinch-to-zoom on phones to read smaller price details -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Tatu University Restaurant Menu</title>
   <style>
     * {
@@ -11,34 +12,52 @@
       padding: 0;
     }
     body {
-      background-color: #0f0f0f;
+      background-color: #121212;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 0;
     }
-    .menu-container {
+    .menu-wrapper {
       width: 100%;
-      max-width: 600px;
-      padding: 12px;
+      /* Expands fully on mobile, caps cleanly on large desktop displays */
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
     }
     .menu-image {
+      /* Fits full width of mobile screens */
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      object-fit: contain;
+      cursor: zoom-in;
+    }
+
+    /* Desktop polish */
+    @media (min-width: 768px) {
+      body {
+        padding: 24px 16px;
+      }
+      .menu-image {
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="menu-container">
-    <img 
-      class="menu-image" 
-      src="./taturestaurant.png" 
-      alt="Tatu University Restaurant Menu"
-    >
+  <div class="menu-wrapper">
+    <!-- Click on desktop will open high-res original in new tab -->
+    <a href="./taturestaurant.png" target="_blank" rel="noopener noreferrer" style="width: 100%; display: block;">
+      <img 
+        class="menu-image" 
+        src="./taturestaurant.png" 
+        alt="Tatu University Restaurant Menu - World Talent Conference 2026"
+      >
+    </a>
   </div>
 </body>
 </html>
